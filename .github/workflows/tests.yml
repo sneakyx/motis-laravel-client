@@ -28,6 +28,11 @@ jobs:
 
       - name: Install dependencies
         run: |
+          # Laravel 11.x releases currently carry open security advisories, so
+          # Composer refuses to install them by default. The test matrix still
+          # wants to run against Laravel 11; this only relaxes the policy for
+          # the CI installation.
+          composer config policy.advisories.block false
           composer require "illuminate/contracts:${{ matrix.laravel }}" --no-interaction --no-update
           composer update --prefer-dist --no-progress
 
@@ -47,7 +52,9 @@ jobs:
           coverage: pcov
 
       - name: Install dependencies
-        run: composer update --prefer-dist --no-interaction --no-progress
+        run: |
+          composer config policy.advisories.block false
+          composer update --prefer-dist --no-interaction --no-progress
 
       - name: Run tests with coverage
         run: vendor/bin/phpunit --coverage-text
