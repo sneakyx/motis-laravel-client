@@ -1,0 +1,55 @@
+{
+    "name": "sneakyx/motis-laravel-client",
+    "description": "Laravel integration for MOTIS: fluent route search, geocoding and caching on top of motis-php-client",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["laravel", "motis", "transit", "routing", "geocoding", "public-transport"],
+    "authors": [
+        {
+            "name": "André Scholz"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/contracts": "^11.0|^12.0|^13.0",
+        "sneakyx/motis-php-client": "^0.1"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.6|^10.0|^11.0",
+        "phpunit/phpunit": "^10.5|^11.0|^12.0"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/sneakyx/motis-php-client.git"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Sneakyx\\MotisLaravelClient\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sneakyx\\MotisLaravelClient\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sneakyx\\MotisLaravelClient\\MotisServiceProvider"
+            ],
+            "aliases": {
+                "Motis": "Sneakyx\\MotisLaravelClient\\Facades\\Motis"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
