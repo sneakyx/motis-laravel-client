@@ -18,7 +18,7 @@ caching and collections with convenience helpers.
 ## Requirements
 
 - PHP 8.2+
-- Laravel 11, 12 or 13
+- Laravel 12 or 13
 - A MOTIS server (e.g. https://api.transitous.org or your own instance)
 
 ## Installation
